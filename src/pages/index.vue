@@ -138,8 +138,7 @@ const templateStr = computed(() =>
       `)
 
 const scriptStr = computed(() =>
-`
-<script setup lang="ts">
+`script setup lang="ts">
 import type { FormInstance } from 'element-plus'
 
 const queryFormRef = ref<FormInstance>()
@@ -216,12 +215,11 @@ function handleSubmit() {
 onMounted(() => {
   handleQuery()
 })
-<`,
-
-)
+<
+`)
 async function copyForm() {
   const { copy } = useClipboard()
-  await copy(`${scriptStr.value}/script>${templateStr.value}`)
+  await copy(`<${scriptStr.value}/script>${templateStr.value}`)
   ElMessage.success('已复制到剪贴板')
 }
 
