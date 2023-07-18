@@ -58,9 +58,8 @@ const headerButtonStr = computed(() =>
 
 const tableColumnStr = computed(() =>
   formData.tableColumnList.reduce((pre, cur) =>
-    `${pre} 
-          <el-table-column prop="${cur.prop}" label="${cur.label}" align="center" />
-    `
+    `${pre}
+    <el-table-column prop="${cur.prop}" label="${cur.label}" align="center" />`
   , ''),
 )
 
@@ -90,10 +89,8 @@ const templateStr = computed(() =>
         ${headerFormItemStr.value}
 
         <el-form-item>
-          <div flex gap-4>
-            <div i-carbon:search icon-btn @click="handleQuery" />
-            <div i-carbon:trash-can icon-btn @click="resetQuery" />
-          </div>
+          <el-button @click="handleQuery" circle :icon="Search" />
+          <el-button @click="resetQuery" circle :icon="Delete" />
         </el-form-item>
 
         <el-row justify="end">
@@ -139,6 +136,7 @@ const templateStr = computed(() =>
 
 const scriptStr = computed(() =>
 `script setup lang="ts">
+import { Search, Delete } from '@element-plus/icons-vue'
 import type { FormInstance } from 'element-plus'
 
 const queryFormRef = ref<FormInstance>()
@@ -148,11 +146,13 @@ const { dynamicHeight } = useDynamicHeight()
 const state = reactive({
   loading: false,
   queryParams: {
+    foo: '',
     pageNum: 1,
     pageSize: 20,
   },
   total: 0,
   tableData: [],
+  fooList: [],
   dialog: { title: '', visible: false, type: '' },
   formData: {},
 })
@@ -167,7 +167,7 @@ const {
 } = toRefs(state)
 
 function handleQuery() {
-  state.loading = true
+  // state.loading = true
   // listUserPages(state.queryParams)
   //   .then(({ data }) => {
   //     state.total = data.total
@@ -369,9 +369,6 @@ function formatType(item: any) {
       </el-row>
     </el-form>
     <div class="footer">
-      <el-button type="primary" @click="$router.push('/preview')">
-        预览
-      </el-button>
       <el-button type="primary" @click="copyForm">
         生成
       </el-button>
