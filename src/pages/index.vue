@@ -152,7 +152,7 @@ const state = reactive({
   },
   total: 0,
   tableData: [],
-  fooList: [],
+  fooList: [{ value: 123, label: 'hello' }],
   dialog: { title: '', visible: false, type: '' },
   formData: {},
 })
@@ -162,6 +162,7 @@ const {
   queryParams,
   total,
   tableData,
+  fooList,
   dialog,
   formData,
 } = toRefs(state)
