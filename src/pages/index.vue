@@ -43,8 +43,7 @@ const headerFormItemStr = computed(() =>
     `${pre} 
         <el-form-item label="${cur.label}" prop="${cur.prop}">
             ${cur.formatType}
-        </el-form-item>`
-  , ''),
+        </el-form-item>`, ''),
 )
 
 const headerButtonStr = computed(() =>
@@ -52,15 +51,13 @@ const headerButtonStr = computed(() =>
     `${pre} 
           <el-button type="primary" plain @click="handleOperate('${cur.action}')">
             ${cur.label}
-          </el-button>`
-  , ''),
+          </el-button>`, ''),
 )
 
 const tableColumnStr = computed(() =>
   formData.tableColumnList.reduce((pre, cur) =>
     `${pre}
-    <el-table-column prop="${cur.prop}" label="${cur.label}" align="center" />`
-  , ''),
+    <el-table-column prop="${cur.prop}" label="${cur.label}" align="center" />`, ''),
 )
 
 const tableButtonStr = computed(() =>
@@ -68,20 +65,18 @@ const tableButtonStr = computed(() =>
     `${pre} 
           <el-button link type="primary" @click="handleOperate('${cur.action}', row)">
             ${cur.label}
-          </el-button>`
-  , ''),
+          </el-button>`, ''),
 )
 const dialogFormItemStr = computed(() =>
   formData.dialogFormItemList.reduce((pre, cur) =>
-  `${pre} 
+    `${pre} 
         <el-form-item label="${cur.label}" prop="${cur.prop}">
             ${cur.formatType}
-        </el-form-item>`
-  , ''),
+        </el-form-item>`, ''),
 )
 
 const templateStr = computed(() =>
-` 
+  ` 
 <template>
   <div class="app-container">
     <div class="app-container-header">
@@ -135,7 +130,7 @@ const templateStr = computed(() =>
       `)
 
 const scriptStr = computed(() =>
-`script setup lang="ts">
+  `script setup lang="ts">
 import { Search, Delete } from '@element-plus/icons-vue'
 import type { FormInstance } from 'element-plus'
 

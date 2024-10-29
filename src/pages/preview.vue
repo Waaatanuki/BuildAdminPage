@@ -60,9 +60,11 @@ function handleOperate(action: string, row: any = {}) {
 }
 
 function handleSubmit() {
-  formRef.value?.validate((valid: any) => {
+  formRef.value?.validate((valid) => {
     if (!valid)
-      return false
+      return
+
+    console.log(state.formData)
 
     // crudUser(state.dialog.type, state.formData).then(({ status, msg }) => {
     //   ElMessage.success('操作成功')

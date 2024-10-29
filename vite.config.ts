@@ -1,13 +1,11 @@
-/// <reference types="vitest" />
-
 import path from 'node:path'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
-import Components from 'unplugin-vue-components/vite'
+import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import UnoCSS from 'unocss/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   base: '/BuildAdminPage/',
@@ -18,11 +16,7 @@ export default defineConfig({
   },
   plugins: [
     Vue(),
-
-    // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
-
-    // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
@@ -36,15 +30,10 @@ export default defineConfig({
       ],
       vueTemplate: true,
     }),
-
-    // https://github.com/antfu/vite-plugin-components
     Components({
       dts: true,
       resolvers: [ElementPlusResolver()],
     }),
-
-    // https://github.com/antfu/unocss
-    // see uno.config.ts for config
-    UnoCSS(),
+    Unocss(),
   ],
 })
